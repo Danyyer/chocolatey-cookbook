@@ -25,7 +25,7 @@ module Chocolatey
       return @is_chocolatey_installed if @is_chocolatey_installed
       return false if chocolatey_install.nil?
       # choco /? returns an exit status of -1 with chocolatey 0.9.9 => use list
-      cmd = Mixlib::ShellOut.new("#{chocolatey_executable} list -l chocolatey")
+      cmd = Mixlib::ShellOut.new("#{chocolatey_executable} list chocolatey")
       cmd.run_command
       @is_chocolatey_installed = cmd.exitstatus == 0
     end
